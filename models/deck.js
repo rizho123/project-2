@@ -7,5 +7,11 @@ module.exports = function(sequelize, DataTypes) {
         url: DataTypes.STRING,
         format: DataTypes.STRING
     });
+
+    Deck.associate = function(models) {
+        Deck.belongsTo(models.User);
+        Deck.belongsToMany(models.Card, {through: "CardDeck"});
+    };
+
     return Deck;
 };
