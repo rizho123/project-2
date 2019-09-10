@@ -1,3 +1,4 @@
+//columns all subject to change depending on what we end up needing
 module.exports = function(sequelize, DataTypes) {
   var Card = sequelize.define("Card", {
     name: {
