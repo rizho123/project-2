@@ -25,34 +25,32 @@ module.exports = function(app) {
   app.post("/api/cards", function(req, res) {
     var card = req.body;
     var colors = [];
-    
+
     var queryObj = {};
-    
+
     if (card.hasOwnProperty("name")) {
-      if(card.name) {
+      if (card.name) {
         queryObj.name = card.name;
-      }
-      else {
+      } else {
         queryObj.name = "";
       }
-    }
-    else {
+    } else {
       queryObj.name = "";
     }
 
-    if(card.hasOwnProperty("cmc")) {
+    if (card.hasOwnProperty("cmc")) {
       queryObj.convertedManaCost = card.cmc;
     }
-    if(card.hasOwnProperty("rarity")) {
+    if (card.hasOwnProperty("rarity")) {
       queryObj.rarity = card.rarity;
     }
-    if(card.hasOwnProperty("type_line")) {
+    if (card.hasOwnProperty("type_line")) {
       queryObj.typeString = card.type_line;
     }
-    if(card.hasOwnProperty("set_name")) {
+    if (card.hasOwnProperty("set_name")) {
       queryObj.setName = card.set_name;
     }
-    if(card.hasOwnProperty("oracle_id")) {
+    if (card.hasOwnProperty("oracle_id")) {
       queryObj.oracleId = card.oracle_id;
     }
     if (card.hasOwnProperty("loyalty")) {
@@ -61,7 +59,7 @@ module.exports = function(app) {
     if (card.hasOwnProperty("color_identity")) {
       queryObj.colorString = card.color_identity.toString();
       for (var i = 0; i < card.color_identity.length; i++) {
-        colors.push({name: card.color_identity[i]});
+        colors.push({ name: card.color_identity[i] });
       }
       queryObj.Colors = colors;
     }
@@ -99,9 +97,12 @@ module.exports = function(app) {
     }
     if (card.hasOwnProperty("type_line")) {
       var types = [];
-      var typeLine = card.type_line.split(" ").join("").split("—");
+      var typeLine = card.type_line
+        .split(" ")
+        .join("")
+        .split("—");
       for (var i = 0; i < typeLine.length; i++) {
-        types.push({name:typeLine[i]});
+        types.push({ name: typeLine[i] });
       }
       queryObj.CardTypes = types;
     }
@@ -109,37 +110,37 @@ module.exports = function(app) {
     if (card.hasOwnProperty("legalities")) {
       var legalities = [];
       if (card.legalities.standard === "legal") {
-        legalities.push({name:"Standard"});
+        legalities.push({ name: "Standard" });
       }
       if (card.legalities.future === "legal") {
-        legalities.push({name:"Future"});
+        legalities.push({ name: "Future" });
       }
       if (card.legalities.modern === "legal") {
-        legalities.push({name:"Modern"});
+        legalities.push({ name: "Modern" });
       }
       if (card.legalities.legacy === "legal") {
-        legalities.push({name:"Legacy"});
+        legalities.push({ name: "Legacy" });
       }
       if (card.legalities.pauper === "legal") {
-        legalities.push({name:"Pauper"});
+        legalities.push({ name: "Pauper" });
       }
       if (card.legalities.vintage === "legal") {
-        legalities.push({name:"Vintage"});
+        legalities.push({ name: "Vintage" });
       }
       if (card.legalities.penny === "legal") {
-        legalities.push({name:"Penny"});
+        legalities.push({ name: "Penny" });
       }
       if (card.legalities.commander === "legal") {
-        legalities.push({name:"Commander"});
+        legalities.push({ name: "Commander" });
       }
       if (card.legalities.brawl === "legal") {
-        legalities.push({name:"Brawl"});
+        legalities.push({ name: "Brawl" });
       }
       if (card.legalities.duel === "legal") {
-        legalities.push({name:"Duel"});
+        legalities.push({ name: "Duel" });
       }
       if (card.legalities.oldschool === "legal") {
-        legalities.push({name:"Oldschool"});
+        legalities.push({ name: "Oldschool" });
       }
       queryObj.Legalitys = legalities;
     }
