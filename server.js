@@ -1,6 +1,7 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var axios = require("axios");
 
 var db = require("./models");
 
@@ -33,9 +34,19 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
+function postAllCards(jsonArr, i) {
+  axios.post("http://localhost:3000/api/cards", jsonArr[i]).then(function(response) {
+    if (i < jsonArr.length) {
+      postAllCards(jsonArr, i + 1);
+    }
+  })
+}
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
+/*     axios.get("https://archive.scryfall.com/json/scryfall-oracle-cards.json").then(function(response) {
+      postAllCards(response.data, 0);
+    }); */
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,

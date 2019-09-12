@@ -6,34 +6,28 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     artist: DataTypes.STRING,
-    colors: DataTypes.STRING,
+    colorString: DataTypes.STRING,
     convertedManaCost: DataTypes.FLOAT,
     flavorText: DataTypes.TEXT,
-    layout: DataTypes.STRING,
-    loyalty: DataTypes.INTEGER,
+    loyalty: DataTypes.STRING,
     manaCost: DataTypes.STRING,
-    number: DataTypes.INTEGER,
     power: DataTypes.STRING,
-    printings: DataTypes.STRING,
     rarity: DataTypes.STRING,
-    scryfallIllustrationId: DataTypes.STRING,
-    side: DataTypes.STRING,
-    type: DataTypes.STRING,
     text: DataTypes.TEXT,
     toughness: DataTypes.STRING,
-    types: DataTypes.STRING,
-    uuid: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      primaryKey: true
-    }
+    typeString: DataTypes.STRING,
+    oracleId: DataTypes.STRING,
+    setName: DataTypes.STRING,
+    imageURLNormal: DataTypes.STRING,
+    imageURLSmall: DataTypes.STRING,
+    imageURLArtCrop: DataTypes.STRING
   });
 
   Card.associate = function(models) {
     Card.belongsToMany(models.Deck, { through: "CardDeck" });
     Card.belongsToMany(models.CardType, { through: "CardCardType" });
     Card.belongsToMany(models.Color, { through: "CardColor" });
-    Card.belongsToMany(models.Format, { through: "CardFormat" });
+    Card.belongsToMany(models.Legality, { through: "CardLegality" });
   };
 
   return Card;
