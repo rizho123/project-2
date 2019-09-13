@@ -39,15 +39,14 @@ if (process.env.NODE_ENV === "test") {
 
 function postAllCards(jsonArr, i) {
   if (i < jsonArr.length) {
-    if(jsonArr[i].legalities.standard === "legal") {
+    if (jsonArr[i].legalities.standard === "legal") {
       axios
         .post("http://localhost:3000/api/cards", jsonArr[i])
         .then(function(response) {
           console.log(response);
-            postAllCards(jsonArr, i + 1);
+          postAllCards(jsonArr, i + 1);
         });
-    }
-    else {
+    } else {
       postAllCards(jsonArr, i + 1);
     }
   }
@@ -57,9 +56,11 @@ function postAllCards(jsonArr, i) {
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     if (dbImport) {
-      axios.get("https://archive.scryfall.com/json/scryfall-oracle-cards.json").then(function(response) {
-        postAllCards(response.data, 0);
-      });
+      axios
+        .get("https://archive.scryfall.com/json/scryfall-oracle-cards.json")
+        .then(function(response) {
+          postAllCards(response.data, 0);
+        });
     }
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
