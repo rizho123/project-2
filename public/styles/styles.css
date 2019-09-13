@@ -108,6 +108,7 @@ body {
 .deckContainer {
     background: #1e31369d !important;
     padding: 0;
+    border-radius: 4px;
 }
 
 .deckedCards {
@@ -161,14 +162,15 @@ body {
     overflow: hidden;
     width: 180px;
     height: 251px;
-    transition-duration: .2s;
     transition-property: filter;
     filter: saturate(.7);
     display: inline-block;
     cursor: pointer;
     background-color: #00000000;
     border: none;
+    border-radius: 5%;
     outline: none;
+    transition: 0.3s;
 }
 
 .card>img {
@@ -182,6 +184,8 @@ body {
 
 .card:hover {
     filter: saturate(1.5);
+    box-shadow: 0 0 5px #00ccffce;
 }
+
 
 /* CARDS */
