@@ -107,46 +107,8 @@ module.exports = function(app) {
       queryObj.CardTypes = types;
     }
 
-    if (card.hasOwnProperty("legalities")) {
-      var legalities = [];
-      if (card.legalities.standard === "legal") {
-        legalities.push({ name: "Standard" });
-      }
-      if (card.legalities.future === "legal") {
-        legalities.push({ name: "Future" });
-      }
-      if (card.legalities.modern === "legal") {
-        legalities.push({ name: "Modern" });
-      }
-      if (card.legalities.legacy === "legal") {
-        legalities.push({ name: "Legacy" });
-      }
-      if (card.legalities.pauper === "legal") {
-        legalities.push({ name: "Pauper" });
-      }
-      if (card.legalities.vintage === "legal") {
-        legalities.push({ name: "Vintage" });
-      }
-      if (card.legalities.penny === "legal") {
-        legalities.push({ name: "Penny" });
-      }
-      if (card.legalities.commander === "legal") {
-        legalities.push({ name: "Commander" });
-      }
-      if (card.legalities.brawl === "legal") {
-        legalities.push({ name: "Brawl" });
-      }
-      if (card.legalities.duel === "legal") {
-        legalities.push({ name: "Duel" });
-      }
-      if (card.legalities.oldschool === "legal") {
-        legalities.push({ name: "Oldschool" });
-      }
-      queryObj.Legalitys = legalities;
-    }
-
     db.Card.create(queryObj, {
-      include: [db.Color, db.Legality, db.CardType]
+      include: [db.Color, db.CardType]
     }).then(function(card) {
       res.json(card);
     });

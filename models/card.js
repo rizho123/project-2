@@ -27,7 +27,6 @@ module.exports = function(sequelize, DataTypes) {
     Card.belongsToMany(models.Deck, { through: "CardDeck" });
     Card.belongsToMany(models.CardType, { through: "CardCardType" });
     Card.belongsToMany(models.Color, { through: "CardColor" });
-    Card.belongsToMany(models.Legality, { through: "CardLegality" });
   };
 
   return Card;
