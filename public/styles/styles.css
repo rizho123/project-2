@@ -1,3 +1,181 @@
-.list-group-item {
-  line-height: 2.5;
+/* CUSTOM FONTS, etc. */
+
+@font-face {
+    font-family: "mtg";
+    src: url('MAGIC.TTF');
 }
+
+/* CUSTOM FONTS, etc. */
+
+/* General */
+
+body {
+    background: url("tweed.png");
+    background-attachment: fixed;
+    font-family: "mtg";
+}
+
+.row {
+    margin-top: 2%;
+}
+
+/* General */
+
+/* TITLE */
+
+.pageTitle {
+    font-family: Righteous;
+    font-size: 75px;
+    color: white;
+    background: url("fire.gif");
+    background-position: -25% 65%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* TITLE */
+
+/* Searchbar */
+
+.search_cards {
+    border: 1px solid red;
+    padding: 10px;
+}
+
+.searchButton {
+    float: left;
+    display: inline-block;
+    background: transparent;
+    text-transform: uppercase;
+    font-family: Righteous;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: rgba(223, 139, 106, 0.7);
+    border-radius: 0;
+    padding: 8px 35px 8px;
+    transition: all 0.7s ease-out;
+    background: linear-gradient(270deg, rgba(223, 139, 106, 0.8), rgba(146, 52, 52, 0.8), rgba(34,34,34,0), rgba(34,34,34,0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    margin: 0.625rem;
+    border: none;
+    border: 1px solid rgba(223, 124, 106, 0.3);
+}
+
+.searchButton:hover {
+    color: #fff;
+    border: 1px solid rgba(223, 106, 106, 0);
+    background-position: 99% 50%;
+}
+
+.cardSearch {
+    margin: 0;
+}
+
+/* Searchbar */
+
+/* Available Cards */
+
+.availableCardsContainer {
+    display: inline-block;
+    overflow: scroll;
+    width: 915px;
+    height: 600px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 6px;
+    border-radius: 4px;
+    background: #1e31369d!important;
+}
+
+.availableCardsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* Available Cards */
+
+/* DECKED CARDS */
+
+.deckContainer {
+    background: #1e31369d !important;
+    padding: 0;
+}
+
+.deckedCards {
+    margin: 0;
+    display: flex;
+}
+
+.deckThumb {
+    max-width: 100%;
+    width: 30px;
+    height: 30px;
+}
+
+.deckList {
+    flex: 1;
+    z-index: 1;
+}
+
+.deckedCards:hover {
+    cursor: pointer;
+}
+
+.deckedCards>.hoverimage {
+    display: none;  
+  }
+  
+.deckedCards:hover>.hoverimage {
+      display: inline;
+  }
+
+.hoverimage {
+    width: 360px;
+    height: 502px;
+    float: right;
+    position: absolute;
+    border-radius: 5%;
+    opacity: 0.6;
+    z-index: 1;
+
+}
+
+/* DECKED CARDS */
+
+/* CARDS */
+
+.availableCards {
+    margin: auto;
+}
+
+.card {
+    overflow: hidden;
+    width: 180px;
+    height: 251px;
+    transition-duration: .2s;
+    transition-property: filter;
+    filter: saturate(.7);
+    display: inline-block;
+    cursor: pointer;
+    background-color: #00000000;
+    border: none;
+    outline: none;
+}
+
+.card>img {
+    border-radius: 5%;
+}
+
+.cardImg {
+    height: 251px !important;
+    max-width: 100%;
+}
+
+.card:hover {
+    filter: saturate(1.5);
+}
+
+/* CARDS */

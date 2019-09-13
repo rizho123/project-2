@@ -2,7 +2,7 @@
   "development": {
     "username": "test_user",
     "password": "password",
-    "database": "exampledb",
+    "database": "tome_db",
     "host": "localhost",
     "dialect": "mysql"
   },
