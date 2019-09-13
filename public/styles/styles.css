@@ -10,7 +10,7 @@
 /* General */
 
 body {
-    background: url("tweed.png");
+    background: url("../assets/img/tweed.png");
     background-attachment: fixed;
     font-family: "mtg";
 }
@@ -27,7 +27,7 @@ body {
     font-family: Righteous;
     font-size: 75px;
     color: white;
-    background: url("fire.gif");
+    background: url("../assets/img/fire.gif");
     background-position: -25% 65%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
