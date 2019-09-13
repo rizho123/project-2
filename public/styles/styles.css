@@ -10,13 +10,19 @@
 /* General */
 
 body {
-    background: url("../assets/img/tweed.png");
+    background: url("tweed.png");
     background-attachment: fixed;
     font-family: "mtg";
 }
 
 .row {
     margin-top: 2%;
+}
+
+.container {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 5%;
 }
 
 /* General */
@@ -27,7 +33,7 @@ body {
     font-family: Righteous;
     font-size: 75px;
     color: white;
-    background: url("../assets/img/fire.gif");
+    background: url("fire.gif");
     background-position: -25% 65%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
