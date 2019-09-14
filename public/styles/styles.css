@@ -25,18 +25,98 @@ body {
     padding-bottom: 5%;
 }
 
+#login, .allDecks {
+    margin: auto;
+}
+
+.sectionTitle {
+    color: #ffac31;
+    text-shadow: 2px 2px 2px #e62200, -2px 2px 2px #e62200, 2px -2px 2px #e62200, -2px -2px 2px #e62200;
+}
+
 /* General */
 
 /* TITLE */
+
+.textDecor {
+    position: relative;
+    margin-bottom: 15%;
+}
 
 .pageTitle {
     font-family: Righteous;
     font-size: 75px;
     color: white;
     background: url("fire.gif");
-    background-position: -25% 65%;
+    background-position: -85% 65%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    z-index: 1;
+}
+
+.titleShadow {
+    font-family: Righteous;
+    font-size: 75px;
+    text-shadow: 0 0 11px #000000;
+    color: #00000071;
+}
+
+.pageTitle, .titleShadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media screen and (max-width: 480px) {
+    #top-bar {
+        margin-bottom: 30%;
+    }
+}
+
+.loginButton {
+    float: left;
+    display: inline-block;
+    background: transparent;
+    text-transform: uppercase;
+    font-family: Righteous;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 15px;
+    letter-spacing: 0.3em;
+    color: rgba(186, 107, 231, 0.74);
+    border-radius: 0;
+    padding: 12px 45px 12px;
+    transition: all 0.3s ease-out;
+    background: linear-gradient(270deg, rgba(147, 106, 223, 0.8), rgba(127, 52, 146, 0.8), rgba(34,34,34,0), rgba(34,34,34,0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    margin: 0.625rem;
+    border: none;
+    border: 1px solid rgba(161, 106, 223, 0.3);
+}
+
+.deckButton {
+    float: left;
+    display: inline-block;
+    background: transparent;
+    text-transform: uppercase;
+    font-family: Righteous;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: rgba(107, 202, 231, 0.74);
+    border-radius: 0;
+    padding: 8px 35px 8px;
+    transition: all 0.3s ease-out;
+    background: linear-gradient(270deg, rgba(106, 127, 223, 0.8), rgba(52, 69, 146, 0.8), rgba(34,34,34,0), rgba(34,34,34,0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    margin: 0.625rem;
+    border: none;
+    border: 1px solid rgba(106, 118, 223, 0.3);
 }
 
 /* TITLE */
@@ -56,12 +136,12 @@ body {
     font-family: Righteous;
     font-weight: 500;
     font-style: normal;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.3em;
-    color: rgba(223, 139, 106, 0.7);
+    color: rgba(231, 122, 107, 0.7);
     border-radius: 0;
     padding: 8px 35px 8px;
-    transition: all 0.7s ease-out;
+    transition: all 0.5s ease-out;
     background: linear-gradient(270deg, rgba(223, 139, 106, 0.8), rgba(146, 52, 52, 0.8), rgba(34,34,34,0), rgba(34,34,34,0));
     background-position: 1% 50%;
     background-size: 300% 300%;
@@ -69,12 +149,17 @@ body {
     margin: 0.625rem;
     border: none;
     border: 1px solid rgba(223, 124, 106, 0.3);
+    border-radius: 4px;
 }
 
-.searchButton:hover {
+.searchButton:hover, .loginButton:hover, .deckButton:hover {
     color: #fff;
     border: 1px solid rgba(223, 106, 106, 0);
     background-position: 99% 50%;
+    cursor: pointer;
+    -moz-box-shadow:    inset 0 0 10px #a3a3a342;
+    -webkit-box-shadow: inset 0 0 10px #a3a3a342;
+    box-shadow:         inset 0 0 10px #a3a3a342, 0 8px 6px -6px black;
 }
 
 .cardSearch {
@@ -92,12 +177,15 @@ body {
     height: 600px;
     margin-right: 5px;
     margin-bottom: 5px;
-    padding: 6px;
     border-radius: 10px;
     background: #1e31369d!important;
+    -webkit-box-shadow: 8px 8px 6px -6px black;
+    -moz-box-shadow: 8px 8px 6px -6px black;
+    box-shadow: 8px 8px 6px -6px black;
+    border: 1px solid #77777763;
 }
 
-.availableCardsContainer::-webkit-scrollbar {
+.availableCardsContainer::-webkit-scrollbar, .deckContainer::-webkit-scrollbar {
     display: none;
 }
 
@@ -107,14 +195,25 @@ body {
 
 .deckContainer {
     background: #1e31369d !important;
+    overflow: scroll;
+    height: 600px;
     padding: 0;
     padding-top: 2%;
     border-radius: 10px;
+    -webkit-box-shadow: 8px 8px 6px -6px black;
+    -moz-box-shadow: 8px 8px 6px -6px black;
+    box-shadow: 8px 8px 6px -6px black;
+    border: 1px solid #77777763;
+}
+
+.deckContainer:hover>.deckedCards>.hoverimage {
+    overflow: visible;
 }
 
 .deckedCards {
     margin: 0;
     display: flex;
+    padding-left: 4%;
 }
 
 .deckThumb {
@@ -141,14 +240,13 @@ body {
   }
 
 .hoverimage {
-    width: 360px;
-    height: 502px;
+    width: 180px;
+    height: 251px;
     float: right;
     position: absolute;
     border-radius: 5%;
-    opacity: 0.6;
+    opacity: 0.8;
     z-index: 1;
-
 }
 
 /* DECKED CARDS */
@@ -186,6 +284,7 @@ body {
 .card:hover {
     filter: saturate(1.5);
     box-shadow: 0 0 5px #00ccffce;
+    
 }
 
 
