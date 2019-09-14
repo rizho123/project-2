@@ -178,7 +178,7 @@ body {
 
 .availableCardsContainer {
     display: inline-block;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 915px;
     height: 600px;
     margin: auto;
@@ -191,8 +191,34 @@ body {
     border: 1px solid #77777763;
 }
 
-.availableCardsContainer::-webkit-scrollbar, .deckContainer::-webkit-scrollbar {
-    display: none;
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+  display: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  visibility: hidden;
+  background: rgba(165, 165, 165, 0.486); 
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  visibility: visible;
+  background: rgb(168, 168, 168); 
+}
+
+::-webkit-scrollbar-thumb:active {
+   background: #9e9d9da1;
 }
 
 /* Available Cards */
@@ -203,7 +229,7 @@ body {
     background: #1e313656 !important;
     margin: auto;
     margin-left: 0;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 600px;
     padding-top: 2%;
     padding-right: 1%;
