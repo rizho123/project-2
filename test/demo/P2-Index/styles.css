@@ -176,10 +176,6 @@ body {
 
 /* Available Cards */
 
-.middleRow {
-    margin-top: 0.5%;
-}
-
 .availableCardsContainer {
     display: inline-block;
     overflow: scroll;
