@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Tome of Legends</title>
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="styles.css"/>
+    	<link href="https://fonts.googleapis.com/css?family=Baloo|Indie+Flower|Francois+One|Raleway|Molengo|Manjari|Monoton|Righteous|Rubik+Mono+One|Staatliches&display=swap" rel="stylesheet">
+    	<link rel="icon" href="">
+	</head>
+	<body>
+
+        <!--INDEX.handlebars START-->
+
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-8 text-center" id="top-bar">
+                        <img class="mainpic" id="mainpic" src=""/>
+                        <div class="textDecor">
+                        <h1 class="pageTitle">Tome of Legends</h1>
+                        <h1 class="titleShadow">Tome of Legends</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-1 text-center" id="login">
+                        <div class="loginButton">Login</div> <!-- {{!Placeholder}} -->
+                    </div>
+                    <div class = "col-md-1 text-center allDecks">
+                      <div class="deckButton">Your Decks</div>
+                  </div>
+              </div>
+            
+              <div class = "row">
+                    <div class="col-md-11 text-center search_cards">
+                        <form action="" method="GET">
+                            <input type="text" class="form-control cardSearch" name="card_search" placeholder="Type the name of a card..." id="search_cards">
+                            <button type="submit" class="btn btn-default searchButton">Search</button>
+                        </form>
+                    </div>
+
+              </div>
+            
+              <div class="row middleRow">
+                    <div class="col-md-9 text-center availableCardsContainer" class="task">
+                        <div class="row">
+                          <!-- {{#each card_data}}
+                            <div class="col-md-9 text-center availableCards">
+                                <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="{{this.card_img}}"> {{!Will update names, etc. Placeholders for now.}}
+					            </div>
+                                </div>
+                            </div>
+                          {{/each}} -->
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                                <div class="floater">
+                                  <div class="card addDeck" data-id="{{this.id}}">
+                                      <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+                                  </div>
+                                  </div>
+                            </div>
+                            <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+                          <div class="col-md-0 text-center availableCards">
+                              <div class="floater">
+                                <div class="card addDeck" data-id="{{this.id}}">
+						            <img class="cardImg" src="card.jpg"> <!-- {{!Will update names, etc. Placeholders for now.}} -->
+					            </div>
+                                </div>
+                          </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2.5 text-center deckContainer" class="task">
+                        <h4 class="sectionTitle deckTitle">Deck</h4>
+                          <!-- {{#each card_data}}
+                              {{#if this.decked}}
+                                <div class="col-md-9 text-center deckedCards"> 
+                                    <img class="deckThumb" src="{{this.card_thumb}}">
+                                    <p class="deckList">{{this.card_name}}>
+                                    <img class="hoverimage" src="{{this.card_img}}">    
+                                </div>
+                                
+
+                            {{/if}}
+                          {{/each}} -->
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+                          
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+
+                          <div class="col-md-9 text-center deckedCards">
+                            <img class="deckThumb" src="art_crop.jpg">
+                            <p class="deckList">The Card name that goes here</p>
+                            <img class="hoverimage" src="card.jpg">
+                          </div>
+                            
+                    </div>
+                </div>
+            </div>
+
+            <script src="script.js"></script>
+
+        <!--INDEX.handlebars END-->
+
+	</body>
+</html>
