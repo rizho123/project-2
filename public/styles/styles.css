@@ -124,8 +124,14 @@ body {
 /* Searchbar */
 
 .search_cards {
-    border: 1px solid red;
-    padding: 10px;
+    margin: auto;
+    background: #1e313656!important;
+    -webkit-box-shadow: 8px 8px 6px -6px black;
+    -moz-box-shadow: 8px 8px 6px -6px black;
+    box-shadow: 8px 8px 6px -6px black;
+    border: 1px solid #77777763;
+    padding: 25px;
+    border-radius: 10px;
 }
 
 .searchButton {
@@ -170,15 +176,19 @@ body {
 
 /* Available Cards */
 
+.middleRow {
+    margin-top: 0.5%;
+}
+
 .availableCardsContainer {
     display: inline-block;
     overflow: scroll;
     width: 915px;
     height: 600px;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    margin: auto;
+    margin-right: 0.5%;
     border-radius: 10px;
-    background: #1e31369d!important;
+    background: #1e313656!important;
     -webkit-box-shadow: 8px 8px 6px -6px black;
     -moz-box-shadow: 8px 8px 6px -6px black;
     box-shadow: 8px 8px 6px -6px black;
@@ -194,7 +204,9 @@ body {
 /* DECKED CARDS */
 
 .deckContainer {
-    background: #1e31369d !important;
+    background: #1e313656 !important;
+    margin: auto;
+    margin-left: 0;
     overflow: scroll;
     height: 600px;
     padding: 0;
@@ -204,10 +216,6 @@ body {
     -moz-box-shadow: 8px 8px 6px -6px black;
     box-shadow: 8px 8px 6px -6px black;
     border: 1px solid #77777763;
-}
-
-.deckContainer:hover>.deckedCards>.hoverimage {
-    overflow: visible;
 }
 
 .deckedCards {
@@ -225,6 +233,7 @@ body {
 .deckList {
     flex: 1;
     z-index: 1;
+    color: #00000088;
 }
 
 .deckedCards:hover {
@@ -232,12 +241,17 @@ body {
 }
 
 .deckedCards>.hoverimage {
-    display: none;  
+    opacity: 0; 
   }
   
 .deckedCards:hover>.hoverimage {
       display: inline;
+      opacity: 0.8;
   }
+
+.deckList:hover {
+    color: #00000000;
+}
 
 .hoverimage {
     width: 180px;
@@ -245,8 +259,9 @@ body {
     float: right;
     position: absolute;
     border-radius: 5%;
-    opacity: 0.8;
     z-index: 1;
+    transition: 0.2s;
+    box-shadow: 0 0 5px #ffffff83;
 }
 
 /* DECKED CARDS */
@@ -270,6 +285,7 @@ body {
     border-radius: 5%;
     outline: none;
     transition: 0.3s;
+    
 }
 
 .card>img {
@@ -282,8 +298,11 @@ body {
 }
 
 .card:hover {
-    filter: saturate(1.5);
-    box-shadow: 0 0 5px #00ccffce;
+    filter: saturate(1.7);
+    webkit-box-shadow: 0px 8px 6px -6px black;
+    -moz-box-shadow: 0px 8px 6px -6px black;
+    box-shadow: 0 0 5px #ffae00ce, 0px 18px 16px -6px black;
+    transform: translateY(-10px);
     
 }
 
