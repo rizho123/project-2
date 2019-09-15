@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Color.associate = function(models) {
-    Color.belongsToMany(models.Card, { through: "CardColor"});
+    Color.belongsToMany(models.Card, { through: "CardColor" });
   };
 
   return Color;

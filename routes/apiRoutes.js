@@ -1,8 +1,8 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  app.get("/api/cards", function(req, res) {
-    var searchParams = req.body;
+  // app.get("/api/cards", function(req, res) {
+  /* var searchParams = req.body;
     var queryObj = {
       where: {},
       include: []
@@ -31,8 +31,8 @@ module.exports = function(app) {
 
     db.Card.findAll(queryObj).then(function(cards) {
       res.json(cards);
-    })
-  });
+    }) */
+  // });
 
   // Create a new deck
   app.post("/api/decks", function(req, res) {
@@ -49,17 +49,21 @@ module.exports = function(app) {
   });
 
   function addTypes(card, types, i) {
-    return db.CardType.findOrCreate({where: {name: types[i]}}).then(function(cardtype) {
-      card.addCardType(cardtype[0]);
-      if (i === types.length - 1) {
-        return card.save();
-      } else {
-        return addTypes(card, types, i + 1);
+    return db.CardType.findOrCreate({ where: { name: types[i] } }).then(
+      function(cardtype) {
+        card.addCardType(cardtype[0]);
+        if (i === types.length - 1) {
+          return card.save();
+        } else {
+          return addTypes(card, types, i + 1);
+        }
       }
-    });
+    );
   }
   function addColors(card, colors, i) {
-    return db.Color.findOrCreate({where: {name: colors[i]}}).then(function(dbColor) {
+    return db.Color.findOrCreate({ where: { name: colors[i] } }).then(function(
+      dbColor
+    ) {
       card.addColor(dbColor[0]);
       if (i === colors.length - 1) {
         return card.save();
@@ -68,12 +72,12 @@ module.exports = function(app) {
       }
     });
   }
-  
+
   app.post("/api/cards", function(req, res) {
     var card = req.body;
     // var colors = [];
     // var types = [];
-    
+
     var queryObj = {};
 
     if (card.hasOwnProperty("name")) {
@@ -158,11 +162,14 @@ module.exports = function(app) {
       if (!dbCard.typeString && !dbCard.colorString) {
         res.json(dbCard);
       } else if (dbCard.typeString) {
-        var types = dbCard.typeString.split("—").join("").split(" ");
+        var types = dbCard.typeString
+          .split("—")
+          .join("")
+          .split(" ");
         var index = types.length;
-        while(index--) {
+        while (index--) {
           if (!types[index]) {
-            types.splice(index,1);
+            types.splice(index, 1);
           }
         }
 
@@ -170,7 +177,9 @@ module.exports = function(app) {
           if (cardInstance.colorString) {
             var colors = cardInstance.colorString.split(",");
 
-            addColors(cardInstance, colors, 0).then(function(cardInstanceFinal) {
+            addColors(cardInstance, colors, 0).then(function(
+              cardInstanceFinal
+            ) {
               res.json(cardInstanceFinal);
             });
           } else {
