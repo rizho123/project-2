@@ -1,7 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
   var Color = sequelize.define("Color", {
-    name: DataTypes.STRING,
-    symbol: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING
+    }
   });
 
   Color.associate = function(models) {

@@ -1,12 +1,38 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
+  // app.get("/api/cards", function(req, res) {
+  /* var searchParams = req.body;
+    var queryObj = {
+      where: {},
+      include: []
+    };
+
+    if (searchParams.hasOwnProperty("colors")) {
+    
+  
+      var includeObj = {
+        model: db.Color,
+        where: {
+          name: {
+            [db.Sequelize.Op.in]: searchParams.colors
+          }
+        }
+      };
+
+      queryObj.include.push(includeObj);
+    } else {
+      queryObj.include.push(db.Color);
+    }
+
+    if(searchParams.hasOwnProperty("name")) {
+      queryObj.where.name = {[db.Sequelize.Op.like]: `%${searchParams.name}%`};
+    }
+
+    db.Card.findAll(queryObj).then(function(cards) {
+      res.json(cards);
+    }) */
+  // });
 
   // Create a new deck
   app.post("/api/decks", function(req, res) {
@@ -22,9 +48,35 @@ module.exports = function(app) {
     });
   });
 
+  function addTypes(card, types, i) {
+    return db.CardType.findOrCreate({ where: { name: types[i] } }).then(
+      function(cardtype) {
+        card.addCardType(cardtype[0]);
+        if (i === types.length - 1) {
+          return card.save();
+        } else {
+          return addTypes(card, types, i + 1);
+        }
+      }
+    );
+  }
+  function addColors(card, colors, i) {
+    return db.Color.findOrCreate({ where: { name: colors[i] } }).then(function(
+      dbColor
+    ) {
+      card.addColor(dbColor[0]);
+      if (i === colors.length - 1) {
+        return card.save();
+      } else {
+        return addColors(card, colors, i + 1);
+      }
+    });
+  }
+
   app.post("/api/cards", function(req, res) {
     var card = req.body;
-    var colors = [];
+    // var colors = [];
+    // var types = [];
 
     var queryObj = {};
 
@@ -58,10 +110,10 @@ module.exports = function(app) {
     }
     if (card.hasOwnProperty("color_identity")) {
       queryObj.colorString = card.color_identity.toString();
-      for (var i = 0; i < card.color_identity.length; i++) {
-        colors.push({ name: card.color_identity[i] });
-      }
-      queryObj.Colors = colors;
+      // for (var i = 0; i < card.color_identity.length; i++) {
+      //   colors.push({ name: card.color_identity[i] });
+      // }
+      // queryObj.Colors = colors;
     }
     if (card.hasOwnProperty("flavor_text")) {
       queryObj.flavorText = card.flavor_text;
@@ -95,22 +147,51 @@ module.exports = function(app) {
     if (card.hasOwnProperty("power")) {
       queryObj.power = card.power;
     }
-    if (card.hasOwnProperty("type_line")) {
-      var types = [];
-      var typeLine = card.type_line
-        .split(" ")
-        .join("")
-        .split("—");
-      for (var i = 0; i < typeLine.length; i++) {
-        types.push({ name: typeLine[i] });
-      }
-      queryObj.CardTypes = types;
-    }
+    // if (card.hasOwnProperty("type_line")) {
+    //   var typeLine = card.type_line
+    //     .split("—")
+    //     .join("")
+    //     .split(" ");
+    //   for (var i = 0; i < typeLine.length; i++) {
+    //     types.push({ name: typeLine[i] });
+    //   }
+    //   queryObj.CardTypes = types;
+    // }
 
-    db.Card.create(queryObj, {
-      include: [db.Color, db.CardType]
-    }).then(function(card) {
-      res.json(card);
+    db.Card.create(queryObj).then(function(dbCard) {
+      if (!dbCard.typeString && !dbCard.colorString) {
+        res.json(dbCard);
+      } else if (dbCard.typeString) {
+        var types = dbCard.typeString
+          .split("—")
+          .join("")
+          .split(" ");
+        var index = types.length;
+        while (index--) {
+          if (!types[index]) {
+            types.splice(index, 1);
+          }
+        }
+
+        addTypes(dbCard, types, 0).then(function(cardInstance) {
+          if (cardInstance.colorString) {
+            var colors = cardInstance.colorString.split(",");
+
+            addColors(cardInstance, colors, 0).then(function(
+              cardInstanceFinal
+            ) {
+              res.json(cardInstanceFinal);
+            });
+          } else {
+            res.json(cardInstance);
+          }
+        });
+      } else {
+        var colors = dbCard.colorString.split(",");
+        addColors(dbCard, colors, 0).then(function(cardInstance) {
+          res.json(cardInstance);
+        });
+      }
     });
   });
 };
