@@ -71,7 +71,7 @@ body {
 .titleShadow {
     font-family: Righteous;
     font-size: 75px;
-    text-shadow: 0 0 11px #000000;
+    text-shadow: 10px 10px 11px #000000;
     color: #00000071;
 }
 
