@@ -1,5 +1,5 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
+var $cardSearch = $("#search_cards");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
@@ -69,14 +69,28 @@ var handleFormSubmit = function(event) {
     description: $exampleDescription.val().trim()
   };
 
+  var results = {
+    text: $cardSearch.val().trim(),
+    color: ["W", "G", "R", "B", "U"]
+  };
+
   if (!(example.text && example.description)) {
     alert("You must enter an example text and description!");
+    return;
+  }
+
+  if (!(results.text)) {
+    alert("Please enter a card name!");
     return;
   }
 
   API.saveExample(example).then(function() {
     refreshExamples();
   });
+
+  API.getCards(results).then(function() {
+    searchResults();
+  })
 
   $exampleText.val("");
   $exampleDescription.val("");
@@ -97,3 +111,10 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+// lazyload
+
+$("img.lazy").lazyload({         
+  effect : "fadeIn",
+  container: $(".availableCardsContainer")
+});
