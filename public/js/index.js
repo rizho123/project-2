@@ -118,3 +118,14 @@ $("img.lazy").lazyload({
   effect : "fadeIn",
   container: $(".availableCardsContainer")
 });
+
+// filter
+
+var $filterButtons = $(".filterButtons").click(function() {
+  if (this.id == "all") {
+    $(".cardsHolder > div").fadeIn(450);
+  } else {
+    var $filter = $("." + this.id).fadeIn(450);
+    $(".cardsHolder > div").not($filter).hide();
+  }
+})
