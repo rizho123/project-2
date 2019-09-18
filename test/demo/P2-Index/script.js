@@ -25,6 +25,11 @@ var $filterButtons = $(".filterButtons").click(function() {
     }
   })
 
+  $(".clearB").on("click", function() {
+      $("#search_cards").val("");
+      $(".cardsHolder > div").fadeIn(450)
+  })
+
   function hovered() {
       $(".hoverimage").addClass("hoveredimage")
   }
@@ -36,5 +41,16 @@ var $filterButtons = $(".filterButtons").click(function() {
   $(document).mousemove(function(e) {
     $(".hoveredimage").offset({"left": event.pageX, "top": event.pageY + 20});
   });
+
+  $(document).ready(function() {
+      $("#search_cards").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          console.log(value)
+          $(".cardsHolder > div").hide()
+          $(".cardsHolder > div").filter(function () {
+            return this.className.match(value);
+        }).fadeIn(450);
+      })
+  })
 
   
