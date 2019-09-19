@@ -38,27 +38,27 @@
                     <div class="col-lg-9 text-center availableCardsContainer" class="task">
                         <div class="row">
                           {{#each card_data}}
-                            <div class="availableCards addDeck {{this.color}}">
+                            <div class="availableCards addDeck {{#each this.Colors}}{{this.name}}{{/each}} {{this.name}}">
                                 <div class="card" data-id="{{this.id}}">
 						            <img class="lazy cardImg" data-original="{{this.imageURLNormal}}" width="180px" height="251px"> {{!Will update names, etc. Placeholders for now.}}
 					            </div>
                             </div>
-                          {{/each}}}
+                          {{/each}}
                         </div>
                     </div>
                     <div class="text-center deckContainer" class="task">
-                        <h4 class="sectionTitle">Deck</h4>
-                          {{#each card_data}}
-                              {{#if this.decked}}
+                        <h4 class="sectionTitle deckTitle">Deck</h4>
+                        
+                              {{#if deck}}
+                                {{#each deck.Cards}}
                                 <div class="col-lg-12 text-center deckedCards"> 
-                                    <img class="deckThumb" src="{{this.card_thumb}}">
-                                    <p class="deckList" onmouseover="hovered()" onmouseout="unhovered()">{{this.card_name}}>
-                                    <img class="hoverimage" src="{{this.card_img}}">    
+                                    <img class="deckThumb" src="{{this.imageURLSmall}}">
+                                    <p class="deckList" onmouseover="hovered()" onmouseout="unhovered()">{{this.name}}>
+                                    <img class="hoverimage" src="{{this.imageURLNormal}}">    
                                 </div>
-                                
-
+                                {{/each}}
                             {{/if}}
-                          {{/each}}
+                      
                             
                     </div>
                 </div>
