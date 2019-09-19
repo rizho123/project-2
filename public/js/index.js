@@ -79,7 +79,7 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  if (!(results.text)) {
+  if (!results.text) {
     alert("Please enter a card name!");
     return;
   }
@@ -90,7 +90,7 @@ var handleFormSubmit = function(event) {
 
   API.getCards(results).then(function() {
     searchResults();
-  })
+  });
 
   $exampleText.val("");
   $exampleDescription.val("");
@@ -123,8 +123,8 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 //     failure_limit : Math.max($imgs.length-1, 0)
 // });
 
-$("img.lazy").lazyload({         
-  effect : "fadeIn",
+$("img.lazy").lazyload({
+  effect: "fadeIn",
   container: $(".availableCardsContainer")
 });
 
@@ -134,39 +134,44 @@ var $filterButtons = $(".filterButtons").click(function() {
   if (this.id == "all") {
     $(".cardsHolder > div").fadeIn(450);
   } else {
-    console.log(this.id)  
+    console.log(this.id);
     var filter = "." + this.id;
-    console.log(filter)
-    $(".cardsHolder > div").hide();  
-    $(".cardsHolder").find("." + this.id).fadeIn(450);
+    console.log(filter);
+    $(".cardsHolder > div").hide();
+    $(".cardsHolder")
+      .find("." + this.id)
+      .fadeIn(450);
   }
-})
+});
 
 $(".clearB").on("click", function() {
   $("#search_cards").val("");
-  $(".cardsHolder > div").fadeIn(450)
-})
+  $(".cardsHolder > div").fadeIn(450);
+});
 
 function hovered() {
-    $(".hoverimage").addClass("hoveredimage")
+  $(".hoverimage").addClass("hoveredimage");
 }
 
 function unhovered() {
-    $(".hoverimage").removeClass("hoveredimage")
+  $(".hoverimage").removeClass("hoveredimage");
 }
 
 $(document).mousemove(function(e) {
-  $(".hoveredimage").offset({"left": event.pageX, "top": event.pageY + 20});
+  $(".hoveredimage").offset({ left: event.pageX, top: event.pageY + 20 });
 });
 
 $(document).ready(function() {
-    $("#search_cards").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        console.log(value)
-        $(".cardsHolder > div").hide()
-        $(".cardsHolder > div").filter(function () {
-          return this.className.match(value);
-      }).fadeIn(450);
-    })
-})
-
+  $("#search_cards").on("keyup", function() {
+    var value = $(this)
+      .val()
+      .toLowerCase();
+    console.log(value);
+    $(".cardsHolder > div").hide();
+    $(".cardsHolder > div")
+      .filter(function() {
+        return this.className.match(value);
+      })
+      .fadeIn(450);
+  });
+});
