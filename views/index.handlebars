@@ -17,26 +17,33 @@
             
               <div class = "row">
                     <div class="col-lg-11 text-center search_cards">
-                        <form action="" method="GET">
+                        <form class="searchContainer">
                             <input type="text" class="form-control cardSearch" name="card_search" placeholder="Type the name of a card..." id="search_cards">
-                            <button type="submit" class="btn btn-default searchButton">Search</button>
+                            <!-- <button type="submit" title="Reset Search" class="btn btn-default searchButton" id="all">Clear</button> -->
+                            <div title="Reset Search" class="searchButton clearB" id="all">Clear</div>
+                            <img class="filterButtons" title="White" id="white" src="/assets/img/W.PNG">
+                            <img class="filterButtons" title="Blue" id="blue" src="/assets/img/U.PNG">
+                            <img class="filterButtons" title="Black" id="black" src="/assets/img/B.PNG">
+                            <img class="filterButtons" title="Red" id="red" src="/assets/img/R.PNG">
+                            <img class="filterButtons" title="Green" id="green" src="/assets/img/G.PNG">
+                            <img class="filterButtons" title="Multicolor" id="multicolor" src="/assets/img/M.svg">
+                            <img class="filterButtons" title="Colorless" id="colorless" src="/assets/img/C.svg">
+                            <img class="filterButtons" title="All Cards" id="all" src="/assets/img/mtg.png">
                         </form>
                     </div>
 
               </div>
             
-              <div class="row">
+              <div class="row middleRow">
                     <div class="col-lg-9 text-center availableCardsContainer" class="task">
                         <div class="row">
                           {{#each card_data}}
-                            <div class="col-md-9 text-center availableCards">
-                                <div class="floater">
-                                <div class="card addDeck" data-id="{{this.id}}">
+                            <div class="availableCards addDeck {{this.color}}">
+                                <div class="card" data-id="{{this.id}}">
 						            <img class="lazy cardImg" data-original="{{this.imageURLNormal}}" width="180px" height="251px"> {{!Will update names, etc. Placeholders for now.}}
 					            </div>
-                                </div>
                             </div>
-                          {{/each}}
+                          {{/each}}}
                         </div>
                     </div>
                     <div class="text-center deckContainer" class="task">
@@ -45,7 +52,7 @@
                               {{#if this.decked}}
                                 <div class="col-lg-12 text-center deckedCards"> 
                                     <img class="deckThumb" src="{{this.card_thumb}}">
-                                    <p class="deckList">{{this.card_name}}>
+                                    <p class="deckList" onmouseover="hovered()" onmouseout="unhovered()">{{this.card_name}}>
                                     <img class="hoverimage" src="{{this.card_img}}">    
                                 </div>
                                 
