@@ -1,5 +1,5 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
+var $cardSearch = $("#search_cards");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
@@ -69,13 +69,27 @@ var handleFormSubmit = function(event) {
     description: $exampleDescription.val().trim()
   };
 
+  var results = {
+    text: $cardSearch.val().trim(),
+    color: ["W", "G", "R", "B", "U"]
+  };
+
   if (!(example.text && example.description)) {
     alert("You must enter an example text and description!");
     return;
   }
 
+  if (!results.text) {
+    alert("Please enter a card name!");
+    return;
+  }
+
   API.saveExample(example).then(function() {
     refreshExamples();
+  });
+
+  API.getCards(results).then(function() {
+    searchResults();
   });
 
   $exampleText.val("");
@@ -97,3 +111,67 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+// LAZYLOAD //
+// May or may not load all images
+
+// var $imgs = $('img.lazy');
+// var $container = $('.availableCardsContainer');
+// var $window = $(window);
+
+// $imgs.lazyload({
+//     failure_limit : Math.max($imgs.length-1, 0)
+// });
+
+$("img.lazy").lazyload({
+  effect: "fadeIn",
+  container: $(".availableCardsContainer")
+});
+
+// FILTER
+
+var $filterButtons = $(".filterButtons").click(function() {
+  if (this.id == "all") {
+    $(".cardsHolder > div").fadeIn(450);
+  } else {
+    console.log(this.id);
+    var filter = "." + this.id;
+    console.log(filter);
+    $(".cardsHolder > div").hide();
+    $(".cardsHolder")
+      .find("." + this.id)
+      .fadeIn(450);
+  }
+});
+
+$(".clearB").on("click", function() {
+  $("#search_cards").val("");
+  $(".cardsHolder > div").fadeIn(450);
+});
+
+function hovered() {
+  $(".hoverimage").addClass("hoveredimage");
+}
+
+function unhovered() {
+  $(".hoverimage").removeClass("hoveredimage");
+}
+
+$(document).mousemove(function(e) {
+  $(".hoveredimage").offset({ left: event.pageX, top: event.pageY + 20 });
+});
+
+$(document).ready(function() {
+  $("#search_cards").on("keyup", function() {
+    var value = $(this)
+      .val()
+      .toLowerCase();
+    console.log(value);
+    $(".cardsHolder > div").hide();
+    $(".cardsHolder > div")
+      .filter(function() {
+        return this.className.match(value);
+      })
+      .fadeIn(450);
+  });
+});
