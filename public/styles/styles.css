@@ -10,7 +10,7 @@
 /* General */
 
 body {
-    background: url("tweed.png");
+    background: url("/assets/img/tweed.png");
     background-attachment: fixed;
     font-family: "mtg";
 }
