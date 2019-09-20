@@ -113,6 +113,36 @@ body {
     border: 1px solid rgba(106, 118, 223, 0.3);
 }
 
+.saveDeck {
+    position: absolute;
+    bottom: 50%;
+    right: 0;
+    z-index: 1;
+}
+
+.saveButton {
+    display: inline-block;
+    background: transparent;
+    text-transform: uppercase;
+    font-family: Righteous;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: rgba(107, 161, 231, 0.74);
+    border-radius: 0;
+    padding: 8px 35px 8px;
+    transition: all 0.3s ease-out;
+    background: linear-gradient(270deg, rgba(106, 157, 223, 0.8), rgba(52, 93, 146, 0.8), rgba(34,34,34,0), rgba(34,34,34,0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    margin: 0.625rem;
+    border: none;
+    border: 1px solid rgba(106, 118, 223, 0.3);
+    opacity: 0.4;
+}
+
 /* TITLE */
 
 /* CARDS */
@@ -209,7 +239,7 @@ body {
     border-radius: 4px;
 }
 
-.searchButton:hover, .loginButton:hover, .deckButton:hover {
+.searchButton:hover, .loginButton:hover, .deckButton:hover, .saveButton:hover {
     color: #fff;
     border: 1px solid rgba(223, 106, 106, 0);
     background-position: 99% 50%;
@@ -217,6 +247,7 @@ body {
     -moz-box-shadow:    inset 0 0 10px #a3a3a342;
     -webkit-box-shadow: inset 0 0 10px #a3a3a342;
     box-shadow:         inset 0 0 10px #a3a3a342, 0 8px 6px -6px black;
+    opacity: 1;
 }
 
 .cardSearch {
@@ -285,7 +316,8 @@ body {
     display: inline-block;
     overflow-y: scroll;
     width: 915px;
-    height: 600px;
+    height: 100%;
+    max-height: 600px;
     margin: auto;
     margin-right: 0.5%;
     border-radius: 10px;
@@ -334,6 +366,7 @@ body {
     background: #1e313656 !important;
     margin: auto;
     margin-left: 0;
+    position: relative;
     overflow-y: scroll;
     overflow-x: hidden;
     height: 600px;
@@ -420,6 +453,13 @@ body {
         width: 1.7em;
         height: 1.7em;
         margin-top: 4%;
+    }
+    .saveDeck {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
+        left: 30%;
     }
 }
 

@@ -14,6 +14,16 @@
                       <div class="deckButton">Your Decks</div>
                   </div>
               </div>
+
+                <div class="saveDeck">
+                    <div class="saveButton">Export Deck</div>
+                </div>
+
+                <div style="display: none;" id="deckAlert">
+                    <h id="deckAlertText"></h>
+                    <br>
+                    <img id="matchPicture" src="">
+                </div>
             
               <div class = "row">
                     <div class="col-lg-11 text-center search_cards">
@@ -35,20 +45,20 @@
               </div>
             
               <div class="row middleRow">
-                    <div class="col-lg-9 text-center availableCardsContainer" class="task">
-                        <div class="row cardsHolder">
+                    <div id="scrollArea" class="col-lg-9 clusterize-scroll text-center availableCardsContainer" class="task">
+                        <div id="contentArea" class="row clusterize-content cardsHolder">
                           {{#each card_data}}
                             <div class="availableCards colorid{{this.colorString}} {{this.name}}">
                                 <div class="floater">
                                     <div class="card addDeck" id="{{this.colorString}}">
-						                <img class="lazy cardImg" data-original="{{this.imageURLNormal}}" data-id="{{this.id}}" data-name="{{this.name}}" width="180px" height="251px">
+						                <img class="lazy cardImg" src="{{this.imageURLNormal}}" title="{{this.name}}" onerror="this.onerror=null;this.src='/assets/img/default.jpg';" data-thumb="{{imageURLArtCrop}}" data-id="{{this.id}}" data-name="{{this.name}}" width="180px" height="251px">
 					                </div>
                                 </div>
                             </div>
                           {{/each}}
                         </div>
                     </div>
-                    <div class="text-center deckContainer" class="task">
+                    <div class="text-center deckContainer">
                         <h4 class="sectionTitle deckTitle">Deck</h4>
                         
                               {{#if deck}}
@@ -61,9 +71,9 @@
                                 {{/each}}
                             {{/if}}
                       
-                            
                     </div>
                 </div>
             </div>
 
+            <script src="/js/clusterize.js"></script>
             <script src="/js/index.js" type="text/javascript"></script>

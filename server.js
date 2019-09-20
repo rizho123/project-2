@@ -26,7 +26,7 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-var syncOptions = { force: false };
+var syncOptions = { force: process.env.SyncOptions };
 
 //Change to true if you need to download and import card data. NOTE: only do this once or you will have duplicate entries in your db
 var dbImport = process.env.DbImport;
