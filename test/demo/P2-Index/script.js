@@ -1,16 +1,19 @@
 // May or may not load all images
 
-// var $imgs = $('img.lazy');
-// var $container = $('.availableCardsContainer');
-// var $window = $(window);
+var $imgs = $('img.lazy');
 
 // $imgs.lazyload({
 //     failure_limit : Math.max($imgs.length-1, 0)
 // });
 
+$("html,body").on('scroll', function(){ 
+  $(window).resize() 
+});
+
 $("img.lazy").lazyload({
   effect: "fadeIn",
-  container: $(".availableCardsContainer")
+  container: $(".availableCardsContainer"),
+  failure_limit : Math.max($imgs.length-1, 0)
 });
 
 var $filterButtons = $(".filterButtons").click(function() {
@@ -18,11 +21,11 @@ var $filterButtons = $(".filterButtons").click(function() {
     $(".cardsHolder > div").fadeIn(450);
   } else {
     console.log(this.id);
-    var filter = "." + this.id;
+    var filter = ".colorid:" + this.id;
     console.log(filter);
     $(".cardsHolder > div").hide();
     $(".cardsHolder")
-      .find("." + this.id)
+      .find(".colorid" + this.id)
       .fadeIn(450);
   }
 });

@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "mtg";
-    src: url('MAGIC.TTF');
+    src: url('/styles/MAGIC.TTF');
 }
 
 /* CUSTOM FONTS, etc. */
@@ -10,7 +10,7 @@
 /* General */
 
 body {
-    background: url("tweed.png");
+    background: url("/assets/img/tweed.png");
     background-attachment: fixed;
     font-family: "mtg";
 }
@@ -47,7 +47,7 @@ body {
     font-family: Righteous;
     font-size: 75px;
     color: white;
-    background: url("fire.gif");
+    background: url("/assets/img/fire.gif");
     background-position: -85% 65%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -246,25 +246,25 @@ body {
     transform: translateY(-1px);
 }
 
-#green:hover {
+#G:hover {
     -moz-box-shadow:    0px 14px 16px -6px black;
     -webkit-box-shadow: 0px 14px 16px -6px black;
-    box-shadow:         inset 0 0 10px #a3a3a342, 0 0 10px #99ffaa, 0px 14px 16px -6px black;
+    box-shadow:         0 0 10px #99ffaa, 0px 14px 16px -6px black;
 }
 
-#blue:hover {
+#U:hover {
     -moz-box-shadow:    0px 14px 16px -6px black;
     -webkit-box-shadow: 0px 14px 16px -6px black;
     box-shadow:         inset 0 0 10px #a3a3a342, 0 0 10px #00c3ff, 0px 14px 16px -6px black;
 }
 
-#red:hover {
+#R:hover {
     -moz-box-shadow:    0px 14px 16px -6px black;
     -webkit-box-shadow: 0px 14px 16px -6px black;
     box-shadow:         inset 0 0 10px #a3a3a342, 0 0 10px #ff5e00, 0px 14px 16px -6px black;
 }
 
-#black:hover {
+#B:hover {
     -moz-box-shadow:    0px 14px 16px -6px black;
     -webkit-box-shadow: 0px 14px 16px -6px black;
     box-shadow:         inset 0 0 10px #a3a3a342, 0 0 10px #000000, 0px 14px 16px -6px black;
@@ -342,6 +342,7 @@ body {
     padding-left: 1%;
     padding-bottom: 0;
     border-radius: 10px;
+    width: 24%;
     -webkit-box-shadow: 8px 8px 6px -6px black;
     -moz-box-shadow: 8px 8px 6px -6px black;
     box-shadow: 8px 8px 6px -6px black;

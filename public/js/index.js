@@ -4,6 +4,9 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
+// DECKS
+var deckArray = [];
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
@@ -115,7 +118,7 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 // LAZYLOAD //
 // May or may not load all images
 
-// var $imgs = $('img.lazy');
+var $imgs = $('img.lazy');
 // var $container = $('.availableCardsContainer');
 // var $window = $(window);
 
@@ -123,9 +126,17 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 //     failure_limit : Math.max($imgs.length-1, 0)
 // });
 
+$(function() {
+  $("img.lazy").show().lazyload()
+  window.onload = function() {
+      $(window).resize()
+  };
+});
+
 $("img.lazy").lazyload({
   effect: "fadeIn",
-  container: $(".availableCardsContainer")
+  container: $(".availableCardsContainer"),
+  failure_limit : Math.max($imgs.length-1, 0)
 });
 
 // FILTER
@@ -135,11 +146,11 @@ var $filterButtons = $(".filterButtons").click(function() {
     $(".cardsHolder > div").fadeIn(450);
   } else {
     console.log(this.id);
-    var filter = "." + this.id;
+    var filter = ".colorid:" + this.id;
     console.log(filter);
     $(".cardsHolder > div").hide();
     $(".cardsHolder")
-      .find("." + this.id)
+      .find(".colorid" + this.id)
       .fadeIn(450);
   }
 });
@@ -170,8 +181,54 @@ $(document).ready(function() {
     $(".cardsHolder > div").hide();
     $(".cardsHolder > div")
       .filter(function() {
-        return this.className.match(value);
+        return this.className.toLowerCase().match(value);
       })
       .fadeIn(450);
+  });
+
+  $(".cardImg").on("click", function() {
+    var id = $(this).data('id')
+    var name = $(this).data('name')
+    
+    console.log(id)
+    deckArray.push(id)
+    console.log(deckArray)
+  
+    var div = $("<div>;")
+    var img = $("<img>;")
+    var p = $("<p>;")
+    var hover = $("<img>;")
+  
+    div.addClass("col-lg-12 text-center deckedCards")
+    img.addClass("deckThumb")
+    img.attr("src", this.src)
+  
+    p.addClass("deckList")
+    p.text(name)
+    p.attr({
+      onmouseover: "hovered()",
+      onmouseout: "unhovered()",
+      "data-id": id
+    })
+  
+    hover.addClass("hoverimage")
+    hover.attr("src", this.src)
+  
+    div.append(img,p,hover)
+    $(".deckContainer").append(div)
+  })
+  
+  $(document).on("click", ".deckList", function() {
+    console.log("deck clicked")
+    console.log($(this).data("id"))
+    var id = $(this).data("id")
+    $(this).closest(".deckedCards").remove();
+    
+    for (var i = 0; i < deckArray.length; i++) {
+      if (deckArray[i] == id) {
+        deckArray.splice(i, 1);
+      }
+    }
+    console.log(deckArray)
   });
 });
