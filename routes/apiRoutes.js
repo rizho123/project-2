@@ -55,15 +55,22 @@ module.exports = function(app) {
 
   // Create a new deck
   app.post("/api/decks", function(req, res) {
-    db.Deck.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+    var cardList = req.body.deck;
+    // var Op = db.Sequelize.Op;
+
+    db.Deck.create({mainboard: cardList.toString()}).then(function(dbDeck) {
+      dbDeck.setCards(cardList).then(function() {
+        dbDeck.save().then(function(deck) {
+          res.json(deck);
+        });
+      });
     });
   });
 
   // Delete a deck by id
   app.delete("/api/decks/:id", function(req, res) {
-    db.Deck.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+    db.Deck.destroy({ where: { id: req.params.id } }).then(function(dbDeck) {
+      res.json(dbDeck);
     });
   });
 
