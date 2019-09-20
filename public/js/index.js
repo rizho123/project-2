@@ -5,7 +5,13 @@ var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
 // DECKS
-var deckArray = [];
+var deck = [];
+
+//Clusterize
+// var clusterize = new Clusterize({
+//   scrollId: 'scrollArea',
+//   contentId: 'contentArea'
+// });
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -115,30 +121,6 @@ var handleDeleteBtnClick = function() {
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-// LAZYLOAD //
-// May or may not load all images
-
-var $imgs = $('img.lazy');
-// var $container = $('.availableCardsContainer');
-// var $window = $(window);
-
-// $imgs.lazyload({
-//     failure_limit : Math.max($imgs.length-1, 0)
-// });
-
-$(function() {
-  $("img.lazy").show().lazyload()
-  window.onload = function() {
-      $(window).resize()
-  };
-});
-
-$("img.lazy").lazyload({
-  effect: "fadeIn",
-  container: $(".availableCardsContainer"),
-  failure_limit : Math.max($imgs.length-1, 0)
-});
-
 // FILTER
 
 var $filterButtons = $(".filterButtons").click(function() {
@@ -186,13 +168,14 @@ $(document).ready(function() {
       .fadeIn(450);
   });
 
-  $(".cardImg").on("click", function() {
+  $(document).on("click", ".cardImg", function() {
     var id = $(this).data('id')
     var name = $(this).data('name')
+    var thumb = $(this).data('thumb')
     
     console.log(id)
-    deckArray.push(id)
-    console.log(deckArray)
+    deck.push(id)
+    console.log(deck)
   
     var div = $("<div>;")
     var img = $("<img>;")
@@ -201,7 +184,8 @@ $(document).ready(function() {
   
     div.addClass("col-lg-12 text-center deckedCards")
     img.addClass("deckThumb")
-    img.attr("src", this.src)
+    img.attr("src", thumb)
+    img.attr("onerror", "this.onerror=null;this.src='/assets/img/default.jpg';")
   
     p.addClass("deckList")
     p.text(name)
@@ -224,11 +208,20 @@ $(document).ready(function() {
     var id = $(this).data("id")
     $(this).closest(".deckedCards").remove();
     
-    for (var i = 0; i < deckArray.length; i++) {
-      if (deckArray[i] == id) {
-        deckArray.splice(i, 1);
+    for (var i = 0; i < deck.length; i++) {
+      if (deck[i] == id) {
+        deck.splice(i, 1);
       }
     }
-    console.log(deckArray)
+    console.log(deck)
   });
 });
+
+
+$(".saveButton").on("click", function() {
+  var URL = window.location.origin
+  $.post("/api/decks", deck).then(function(response) {
+    //whatever code for displaying a modal alert
+    console.log(response)
+  });
+})

@@ -6,6 +6,13 @@ var $imgs = $('img.lazy');
 //     failure_limit : Math.max($imgs.length-1, 0)
 // });
 
+// Clusterize
+
+var clusterize = new Clusterize({
+  scrollId: 'scrollArea',
+  contentId: 'contentArea'
+});
+
 $("html,body").on('scroll', function(){ 
   $(window).resize() 
 });
