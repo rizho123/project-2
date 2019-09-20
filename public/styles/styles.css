@@ -445,9 +445,19 @@ body {
     #top-bar {
         margin-bottom: 30%;
     }
+    .pageTitle {
+        background-position: 65% 70%;
+        background-size: 125%;
+    }
     .deckContainer {
         margin-top: 5%;
         width: 100%;
+    }
+    .loginButton {
+        float: none;
+    }
+    .deckButton {
+        float: none;
     }
     .filterButtons {
         width: 1.7em;
