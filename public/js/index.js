@@ -7,7 +7,7 @@ var $exampleList = $("#example-list");
 // DECKS
 var deck = [];
 
-//Clusterize
+// //Clusterize
 // var clusterize = new Clusterize({
 //   scrollId: 'scrollArea',
 //   contentId: 'contentArea'
@@ -216,7 +216,6 @@ $(document).ready(function() {
     console.log(deck)
   });
 });
-
 
 $(".saveButton").on("click", function() {
   var URL = window.location.origin
