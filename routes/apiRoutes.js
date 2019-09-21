@@ -55,8 +55,7 @@ module.exports = function(app) {
 
   // Create a new deck
   app.post("/api/decks", function(req, res) {
-    var cardList = req.body.deck;
-    // var Op = db.Sequelize.Op;
+    var cardList = req.body["deck[]"];
 
     db.Deck.create({mainboard: cardList.toString()}).then(function(dbDeck) {
       dbDeck.setCards(cardList).then(function() {

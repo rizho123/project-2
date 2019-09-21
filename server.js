@@ -29,7 +29,7 @@ require("./routes/htmlRoutes")(app);
 var syncOptions = { force: process.env.SyncOptions };
 
 //Change to true if you need to download and import card data. NOTE: only do this once or you will have duplicate entries in your db
-var dbImport = process.env.DbImport;
+var dbImport = process.env.DbImport || false;
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
