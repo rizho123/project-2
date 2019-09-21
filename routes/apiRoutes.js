@@ -53,6 +53,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/decks", function(req, res) {
+    db.Deck.findAll({include: [db.Card]}).then(function(decks) {
+      res.json(decks);
+    });
+  });
+
   // Create a new deck
   app.post("/api/decks", function(req, res) {
     var cardList = req.body["deck[]"];

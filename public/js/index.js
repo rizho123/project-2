@@ -219,8 +219,18 @@ $(".saveButton").on("click", function() {
 })
 
 $(".deckButton").on("click", function() {
-  $(".side").fadeToggle(450);
-})
+  $.get("/api/decks").then(function(response) {
+    $(".side").fadeToggle(450);
+    $(".side").empty();
+    for (let i = 0; i < response.length; i++) {
+      var a = $("<a>;")
+      a.addClass("sideDeckList")
+      a.attr("href", "https://project2-mtg.herokuapp.com/decks/" + response[i].id)
+      a.text("Deck " + response[i].id)
+      $(".side").append(a);
+    }
+  });
+});
 
 $(".closebtn").on("click", function(){
   $(".side").fadeOut();
