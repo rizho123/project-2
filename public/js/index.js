@@ -221,7 +221,7 @@ $(".saveButton").on("click", function() {
 $(".deckButton").on("click", function() {
   $.get("/api/decks").then(function(response) {
     $(".side").fadeToggle(450);
-    $(".side").empty();
+    $(".sideDeckList").remove();
     for (let i = 0; i < response.length; i++) {
       var a = $("<a>;")
       a.addClass("sideDeckList")
