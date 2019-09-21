@@ -34,6 +34,42 @@ body {
     text-shadow: 2px 2px 2px #e62200, -2px 2px 2px #e62200, 2px -2px 2px #e62200, -2px -2px 2px #e62200;
 }
 
+#deckAlert {
+    color: #ffffff;
+    text-shadow: 10px 10px 3px black, 0 0 6px #ff5e00;
+    opacity: 0.7;
+    background: url("/assets/img/tweed.png");
+    background-attachment: fixed;
+    border-radius: 20px;
+    background: #1e313656!important;
+    -webkit-box-shadow: 8px 8px 6px -6px black;
+    -moz-box-shadow: 8px 8px 6px -6px black;
+    box-shadow: 8px 8px 6px -6px black;
+    border: 1px solid #77777763;
+}
+
+#deckURL {
+    text-shadow: 10px 10px 3px black;
+    font-size: 20px;
+    color: #ff9100;
+    transition: 0.2s;
+}
+
+#deckURL:hover {
+    color: #ff5e00;
+    text-shadow: 0 0 6px #ff5e00, 10px 10px 3px black;
+}
+
+#deckURL:active {
+    color: #ffffff;
+}
+
+#deckURL:focus {
+    color: #ff9100;
+}
+
+
+
 /* General */
 
 /* TITLE */
@@ -114,7 +150,7 @@ body {
 }
 
 .saveDeck {
-    position: absolute;
+    position: fixed;
     bottom: 50%;
     right: 0;
     z-index: 1;
@@ -141,6 +177,10 @@ body {
     border: none;
     border: 1px solid rgba(106, 118, 223, 0.3);
     opacity: 0.4;
+}
+
+.savedDecksButtons {
+    margin: auto;
 }
 
 /* TITLE */
@@ -316,7 +356,7 @@ body {
     display: inline-block;
     overflow-y: scroll;
     width: 915px;
-    height: 100%;
+    height: 600px;
     max-height: 600px;
     margin: auto;
     margin-right: 0.5%;
@@ -383,7 +423,9 @@ body {
 }
 
 .deckedCards {
-    border-bottom: 1px solid #00000063;
+    border-left: 1px solid #00000057;
+    border-right: 1px solid #00000057;
+    border-bottom: 1px solid #00000057;
     margin: 0;
     margin-top: 5%;
     display: flex;
@@ -439,6 +481,66 @@ body {
 
 /* DECKED CARDS */
 
+/* Side bar */
+
+.side {
+    display: none;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #1e313656;
+    overflow-x: hidden;
+    padding-top: 60px;
+  }
+
+  .side a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #838383;
+      display: block;
+  }
+
+  .side a:hover {
+      color: #fffdfd;
+  }
+
+  .side .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+  }
+
+  .sideT {
+      color: #ffffff;
+      margin-left: 20px;
+      font-family: Molengo;
+
+  }
+
+  .sidePic {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 8x #000000;
+  }
+
+  .sidePic:hover {
+      cursor: pointer;
+      animation: glow-rgb 5s infinite;
+  }
+
+  .sideP {
+    padding: 10px;
+  }
+
+/* Side bar */ 
+
 /* RESPONSIVENESS */
 
 @media screen and (max-width: 680px) {
@@ -470,6 +572,9 @@ body {
         width: 100%;
         z-index: 1;
         left: 30%;
+    }
+    #deckURL {
+        font-size: 7vw;
     }
 }
 

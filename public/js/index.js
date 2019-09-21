@@ -7,7 +7,7 @@ var $exampleList = $("#example-list");
 // DECKS
 var deck = [];
 
-//Clusterize
+// //Clusterize
 // var clusterize = new Clusterize({
 //   scrollId: 'scrollArea',
 //   contentId: 'contentArea'
@@ -127,9 +127,7 @@ var $filterButtons = $(".filterButtons").click(function() {
   if (this.id == "all") {
     $(".cardsHolder > div").fadeIn(450);
   } else {
-    console.log(this.id);
     var filter = ".colorid:" + this.id;
-    console.log(filter);
     $(".cardsHolder > div").hide();
     $(".cardsHolder")
       .find(".colorid" + this.id)
@@ -159,7 +157,6 @@ $(document).ready(function() {
     var value = $(this)
       .val()
       .toLowerCase();
-    console.log(value);
     $(".cardsHolder > div").hide();
     $(".cardsHolder > div")
       .filter(function() {
@@ -173,9 +170,7 @@ $(document).ready(function() {
     var name = $(this).data('name')
     var thumb = $(this).data('thumb')
     
-    console.log(id)
     deck.push(id)
-    console.log(deck)
   
     var div = $("<div>;")
     var img = $("<img>;")
@@ -203,8 +198,6 @@ $(document).ready(function() {
   })
   
   $(document).on("click", ".deckList", function() {
-    console.log("deck clicked")
-    console.log($(this).data("id"))
     var id = $(this).data("id")
     $(this).closest(".deckedCards").remove();
     
@@ -213,16 +206,22 @@ $(document).ready(function() {
         deck.splice(i, 1);
       }
     }
-    console.log(deck)
   });
 });
-
 
 $(".saveButton").on("click", function() {
   var URL = window.location.origin
   $.post("/api/decks", {deck}).then(function(response) {
-    //whatever code for displaying a modal alert
-    console.log(response)
     var deckURL = `${URL}/decks/${response.id}`;
+    $("#deckURL").text(deckURL)
+    $("#deckURL").attr("href", deckURL)
   });
+})
+
+$(".deckButton").on("click", function() {
+  $(".side").fadeToggle(450);
+})
+
+$(".closebtn").on("click", function(){
+  $(".side").fadeOut();
 })
