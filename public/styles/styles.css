@@ -383,7 +383,9 @@ body {
 }
 
 .deckedCards {
-    border-bottom: 1px solid #00000063;
+    border-left: 1px solid #00000057;
+    border-right: 1px solid #00000057;
+    border-bottom: 1px solid #00000057;
     margin: 0;
     margin-top: 5%;
     display: flex;
