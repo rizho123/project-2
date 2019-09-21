@@ -224,5 +224,15 @@ $(".saveButton").on("click", function() {
     //whatever code for displaying a modal alert
     console.log(response)
     var deckURL = `${URL}/decks/${response.id}`;
+    $("#deckURL").text(deckURL)
+    $("#deckURL").attr("href", deckURL)
   });
+})
+
+$(".deckButton").on("click", function() {
+  $(".side").fadeToggle(450);
+})
+
+$(".closebtn").on("click", function(){
+  $(".side").fadeOut();
 })
