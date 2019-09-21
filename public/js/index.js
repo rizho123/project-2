@@ -220,8 +220,9 @@ $(document).ready(function() {
 
 $(".saveButton").on("click", function() {
   var URL = window.location.origin
-  $.post("/api/decks", deck).then(function(response) {
+  $.post("/api/decks", {deck}).then(function(response) {
     //whatever code for displaying a modal alert
     console.log(response)
+    var deckURL = `${URL}/decks/${response.id}`;
   });
 })
