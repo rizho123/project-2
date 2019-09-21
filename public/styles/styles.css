@@ -150,7 +150,7 @@ body {
 }
 
 .saveDeck {
-    position: absolute;
+    position: fixed;
     bottom: 50%;
     right: 0;
     z-index: 1;
