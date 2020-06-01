@@ -239,3 +239,5 @@ $(".deckButton").on("click", function() {
 $(".closebtn").on("click", function(){
   $(".side").fadeOut();
 })
+
+$('#loading').hide();
