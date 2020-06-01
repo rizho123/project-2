@@ -13,6 +13,10 @@ var deck = [];
 //   contentId: 'contentArea'
 // });
 
+$(window).load(function() {
+  $('#loading').hide();
+});
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
@@ -235,7 +239,3 @@ $(".deckButton").on("click", function() {
 $(".closebtn").on("click", function(){
   $(".side").fadeOut();
 })
-
-$(window).load(function() {
-  $('#loading').hide();
-});
